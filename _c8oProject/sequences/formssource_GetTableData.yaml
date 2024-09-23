@@ -1,0 +1,18 @@
+↓forms_config [variables.RequestableVariable-1727105415710]: 
+  comment: |
+    '{
+    	"en": {
+    		"comment":"Returns the rows of the table with a given configuration",
+    		"displayName":"Configuration"
+    	}
+    }'
+  description: configure=lib_SQLConnector/DisplayObjects/mobile/BrowseTables
+  required: true
+  value: 
+↓forms_tableFilter [variables.RequestableVariable-1727105415713]: 
+  comment: |
+    Filters
+    
+  description: filter
+↓model [variables.RequestableVariable-1727105415716]: 
+  comment: If true, just return one line of data so that No Code studio can compte the table model

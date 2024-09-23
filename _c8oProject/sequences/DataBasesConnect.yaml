@@ -1,0 +1,19 @@
+↓Driver [variables.RequestableVariable-1727110592679]: 
+↓User [variables.RequestableVariable-1727110601632]: 
+↓Password [variables.RequestableVariable-1727110608843]: 
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: xd8e180806a1c1d83a6255212121ab827
+  visibility: '-1'
+↓TestPostgre [core.TestCase]: 
+  ↓Driver [variables.TestCaseVariable-1727110644557]: 
+    value: org.postgresql.Driver
+  ↓User [variables.TestCaseVariable-1727110644559]: 
+    value: reader
+  ↓Password [variables.TestCaseVariable-1727110644561]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: xbf46b6478a21d2d3e941df0858dcafe4574c27d0df4b48f2650719a76124e30a
+    visibility: '-1'

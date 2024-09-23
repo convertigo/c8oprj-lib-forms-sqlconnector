@@ -1,0 +1,4 @@
+jdbcDriverClassName: org.postgresql.Driver
+jdbcURL: jdbc:postgresql://<server_name>:<port(optional)>/<database_name>
+↓Default_transaction [transactions.SqlTransaction]: 
+  ↑default: true

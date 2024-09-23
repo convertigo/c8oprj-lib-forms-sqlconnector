@@ -1,10 +1,26 @@
-↑convertigo: 8.0.0.m006
+↑convertigo: 8.1.0.m006
 ↓lib_SQLConnector [core.Project]: 
-  comment: Convertigo NGX builder Project
+  comment: |
+    '{
+        "en": {
+            "displayName": "SQl Connector",
+            "comment": "This is the SQL connector for Convertigo Forms. Use this connector to exchange data with SQL databases."
+        },
+        "fr": {
+            "displayName": "Connecteur SQL",
+            "comment": "Connecteur aux base de données SQL"
+        }
+    }'
   contextTimeout: 59
   corsOrigin: =Origin
   httpSessionTimeout: 60
+  ↓SQL_connector [connectors.SqlConnector-1727109379194]: 🗏 connectors/SQL_connector.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓DataBasesConnect [sequences.GenericSequence]: 🗏 sequences/DataBasesConnect.yaml
+  ↓DataBasesList [sequences.GenericSequence]: 🗏 sequences/DataBasesList.yaml
+  ↓formssource_GetTableData [sequences.GenericSequence]: 🗏 sequences/formssource_GetTableData.yaml
+  ↓lib_BaseRow_reference [references.ProjectSchemaReference]: 
+    projectName: lib_BaseRow=https://github.com/convertigo/c8oprj-lib-baserow.git:branch=8.3.X
   ↓Project_reference [references.ProjectSchemaReference]: 
     comment: ngx builder template
     projectName: mobilebuilder_tpl_8_3_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_3_0_ngx.zip
