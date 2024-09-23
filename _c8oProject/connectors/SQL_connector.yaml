@@ -1,4 +1,21 @@
 jdbcDriverClassName: org.postgresql.Driver
 jdbcURL: jdbc:postgresql://<server_name>:<port(optional)>/<database_name>
-↓Default_transaction [transactions.SqlTransaction]: 
+↓SQLTransaction [transactions.SqlTransaction]: 
   ↑default: true
+  handlers: 
+    →: |
+      '
+      // Handles the transaction start event.
+      function onTransactionStarted() {
+          // TODO: add your code here
+      
+          // TODO: customize the returned value (if you omit returned value, the 
+          // algorithm will continue its process).
+          // Possible values are:
+          //    cancel - means the algorithm cancels the transaction core process.
+      
+          // return "cancel";
+          context.getCurrentTransaction().setQuery(Query);
+      }
+      '
+  ↓Query [variables.RequestableVariable-1727111865555]: 

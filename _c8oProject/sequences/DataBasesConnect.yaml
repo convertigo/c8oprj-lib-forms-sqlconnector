@@ -1,3 +1,35 @@
+↓BuildCnxStringAndRequest [steps.SimpleStep-1727111571223]: 
+  expression: |
+    cnxString = URL + 	    ";user=" + User + ";password=" + Password;
+    Query = "show tables";
+    
+    
+    
+↓field [steps.JsonFieldStep-1727111657852]: 
+  key: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: PLAIN
+        - →→: cnxString
+  output: false
+  value: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: JS
+        - →→: cnxString
+↓Call_Transaction [steps.TransactionStep-1727111522416]: 
+  connectionStringDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1727111657852
+        - java.lang.String: 
+          - ↑value: ./text()
+  sourceTransaction: lib_SQLConnector.SQL_connector.SQLTransaction
+  ↓Query [variables.StepVariable-1727112241674]: 
 ↓Driver [variables.RequestableVariable-1727110592679]: 
 ↓User [variables.RequestableVariable-1727110601632]: 
 ↓Password [variables.RequestableVariable-1727110608843]: 
@@ -6,6 +38,7 @@
     - ↑traceable: false
     - →→: xd8e180806a1c1d83a6255212121ab827
   visibility: '-1'
+↓URL [variables.RequestableVariable-1727111355800]: 
 ↓TestPostgre [core.TestCase]: 
   ↓Driver [variables.TestCaseVariable-1727110644557]: 
     value: org.postgresql.Driver
@@ -17,3 +50,5 @@
       - ↑traceable: false
       - →→: xbf46b6478a21d2d3e941df0858dcafe4574c27d0df4b48f2650719a76124e30a
     visibility: '-1'
+  ↓URL [variables.TestCaseVariable-1727111362410]: 
+    value: jdbc:postgresql://hh-pgsql-public.ebi.ac.uk/pfmegrnargs

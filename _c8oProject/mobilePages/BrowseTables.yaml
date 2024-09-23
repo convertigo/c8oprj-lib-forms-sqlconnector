@@ -540,7 +540,7 @@ title: Title for BrowseTables
                           textValue: 
                             - xmlizable: 
                               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                              - MobileSmartSourceType: plain:Enter database user and password then hit the Connect button
+                              - MobileSmartSourceType: plain:Enter database user and password and configure the DatabaseURL by replacing <server_name> and <database_name> with the values provided by your SQL data scientist. Then hit the Connect button. If the configuration is correct, you will get a success message.
                       ↓Style [ngx.components.UIStyle-1727108520867]: 
                         styleContent: 
                           - xmlizable: 
@@ -607,7 +607,7 @@ title: Title for BrowseTables
                           '{
                            "ionBean": "Input",
                            "ControlName": "plain:JDBC",
-                           "Label": "plain:JDBC Url",
+                           "Label": "plain:Database URL",
                            "Value": "plain:jdbc:postgresql:\/\/<server_name>:<port(optional)>\/<database_name>"
                           }'
                         tagName: ion-input
