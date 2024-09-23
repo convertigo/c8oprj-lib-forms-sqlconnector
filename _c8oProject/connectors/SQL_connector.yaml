@@ -15,7 +15,8 @@ jdbcURL: jdbc:postgresql://<server_name>:<port(optional)>/<database_name>
           //    cancel - means the algorithm cancels the transaction core process.
       
           // return "cancel";
-          context.getCurrentTransaction().setQuery(Query);
+          context.getConnector()
+          
       }
       '
   ↓Query [variables.RequestableVariable-1727111865555]: 
