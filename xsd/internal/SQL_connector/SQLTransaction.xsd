@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:lib_SQLConnector_ns="http://www.convertigo.com/convertigo/projects/lib_SQLConnector" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.convertigo.com/convertigo/projects/lib_SQLConnector">
+    <xsd:element name="SQL_connector__SQLTransaction" type="lib_SQLConnector_ns:SQL_connector__SQLTransactionRequestData">
+        <xsd:annotation/>
+    </xsd:element>
+    <xsd:element name="SQL_connector__SQLTransactionResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="response" type="lib_SQLConnector_ns:SQL_connector__SQLTransactionResponseData"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="SQL_connector__SQLTransactionResponseType">
+        <xsd:sequence>
+            <xsd:element name="document" type="lib_SQLConnector_ns:SQL_connector__SQLTransactionResponseData"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SQL_connector__SQLTransactionRequestData">
+        <xsd:sequence>
+            <xsd:element name="Query" type="xsd:string">
+                <xsd:annotation/>
+            </xsd:element>
+            <xsd:element name="URL" type="xsd:string">
+                <xsd:annotation/>
+            </xsd:element>
+            <xsd:element name="Driver" type="xsd:string">
+                <xsd:annotation/>
+            </xsd:element>
+            <xsd:element name="c8o_title" type="xsd:string">
+                <xsd:annotation/>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SQL_connector_SQLTransaction_document_sql_output_row__column_Type">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute default="?column?" name="originalKeyName" type="xsd:string"/>
+                <xsd:attribute default="string" name="type" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="SQL_connector_SQLTransaction_document_sql_output_rowType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="_column_" type="lib_SQLConnector_ns:SQL_connector_SQLTransaction_document_sql_output_row__column_Type"/>
+        </xsd:sequence>
+        <xsd:attribute default="object" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="SQL_connector_SQLTransaction_document_sql_outputType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="row" type="lib_SQLConnector_ns:SQL_connector_SQLTransaction_document_sql_output_rowType"/>
+        </xsd:sequence>
+        <xsd:attribute default="array" name="type" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="SQL_connector__SQLTransactionResponseData">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="sql_output" type="lib_SQLConnector_ns:SQL_connector_SQLTransaction_document_sql_outputType"/>
+            <xsd:element minOccurs="0" name="error" type="lib_SQLConnector_ns:ConvertigoError"/>
+        </xsd:sequence>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="context" type="xsd:string"/>
+        <xsd:attribute name="contextId" type="xsd:string"/>
+        <xsd:attribute name="fromStub" type="xsd:boolean"/>
+        <xsd:attribute name="fromcache" type="xsd:boolean"/>
+        <xsd:attribute name="generated" type="xsd:string"/>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="signature" type="xsd:long"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="version" type="xsd:string"/>
+        <xsd:attribute name="screenclass" type="xsd:string"/>
+        <xsd:attribute name="userReference" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContextVariable">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoErrorContext">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="variable" type="lib_SQLConnector_ns:ConvertigoErrorContextVariable"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ConvertigoError">
+        <xsd:sequence minOccurs="0">
+            <xsd:element name="code" type="xsd:integer"/>
+            <xsd:element name="message" type="xsd:string"/>
+            <xsd:element name="details" type="xsd:string"/>
+            <xsd:element name="context" type="lib_SQLConnector_ns:ConvertigoErrorContext"/>
+            <xsd:element name="exception" type="xsd:string"/>
+            <xsd:element name="stacktrace" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="project" type="xsd:string"/>
+        <xsd:attribute name="connector" type="xsd:string"/>
+        <xsd:attribute name="transaction" type="xsd:string"/>
+        <xsd:attribute name="sequence" type="xsd:string"/>
+        <xsd:attribute name="type">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="c8o"/>
+                    <xsd:enumeration value="project"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

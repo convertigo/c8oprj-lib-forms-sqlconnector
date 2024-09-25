@@ -1,11 +1,33 @@
-↓BuildCnxStringAndRequest [steps.SimpleStep-1727111571223]: 
+↓BuildCnxStringAndRequest [steps.SimpleStep-1727199611481]: 
   expression: |
-    include("jslib/buildCnxString.js");
-    Query = "SELECT 1";
+    'include("jslib/buildCnxString.js");
+    Query = "";
+    
+    switch (databaseTechnology) {
+        case "mysql":
+    		Query = "SHOW TABLES"
+    		break;
+    		
+        case "postgresql":
+    		Query = "SELECT table_name FROM information_schema.tables WHERE table_schema = ''" + Database + "''"
+    		break;
+    		
+        case "sqlserver":
+    		Query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = ''BASE TABLE''"
+    		break;
+    		
+        case "oracle":
+    		Query = "SELECT table_name FROM user_tables"
+    		break;
+    		
+        default:
+    		Query = "SHOW TABLES"
+    		break;
+    }
     
     
-    
-↓field [steps.JsonFieldStep-1727111657852]: 
+    '
+↓field [steps.JsonFieldStep-1727199611484]: 
   key: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -19,29 +41,29 @@
       - SmartType: 
         - ↑mode: JS
         - →→: cnxString
-↓Call_Transaction [steps.TransactionStep-1727111522416]: 
+↓Call_Transaction [steps.TransactionStep-1727199611487]: 
   connectionStringDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
       - com.twinsoft.convertigo.beans.common.XMLVector: 
         - java.lang.String: 
-          - ↑value: 1727111657852
+          - ↑value: 1727199611484
         - java.lang.String: 
           - ↑value: ./text()
   sourceTransaction: lib_SQLConnector.SQL_connector.SQLTransaction
-  ↓Query [variables.StepVariable-1727112241674]: 
-  ↓URL [variables.StepVariable-1727167951180]: 
-  ↓Driver [variables.StepVariable-1727168244072]: 
-↓IfExist [steps.IfExistStep-1727173590396]: 
+  ↓Query [variables.StepVariable-1727199611490]: 
+  ↓URL [variables.StepVariable-1727199611493]: 
+  ↓Driver [variables.StepVariable-1727199611496]: 
+↓IfExist [steps.IfExistStep-1727199611499]: 
   sourceDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
       - com.twinsoft.convertigo.beans.common.XMLVector: 
         - java.lang.String: 
-          - ↑value: 1727111522416
+          - ↑value: 1727199611487
         - java.lang.String: 
           - ↑value: ./document/error
-  ↓Error_structure [steps.XMLErrorStep-1727173612620]: 
+  ↓Error_structure [steps.XMLErrorStep-1727199611502]: 
     details: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -49,7 +71,7 @@
           - ↑mode: SOURCE
           - com.twinsoft.convertigo.beans.common.XMLVector: 
             - java.lang.String: 
-              - ↑value: 1727111522416
+              - ↑value: 1727199611487
             - java.lang.String: 
               - ↑value: ./document/error/details/text()
     message: 
@@ -59,20 +81,20 @@
           - ↑mode: SOURCE
           - com.twinsoft.convertigo.beans.common.XMLVector: 
             - java.lang.String: 
-              - ↑value: 1727111522416
+              - ↑value: 1727199611487
             - java.lang.String: 
               - ↑value: ./document/error/message/text()
-  ↓Return [steps.ReturnStep-1727173680412]: 
-↓IfExist1 [steps.IfExistStep-1727184911208]: 
+  ↓Return [steps.ReturnStep-1727199611505]: 
+↓IfExist1 [steps.IfExistStep-1727199611508]: 
   sourceDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
       - com.twinsoft.convertigo.beans.common.XMLVector: 
         - java.lang.String: 
-          - ↑value: 1727111522416
+          - ↑value: 1727199611487
         - java.lang.String: 
           - ↑value: ./document/sql_output/row
-  ↓field [steps.JsonFieldStep-1727184949355]: 
+  ↓field [steps.JsonFieldStep-1727199611511]: 
     key: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -85,8 +107,8 @@
         - SmartType: 
           - ↑mode: PLAIN
           - →→: OK
-  ↓Return [steps.ReturnStep-1727184911214]: 
-↓Error_structure [steps.XMLErrorStep-1727184993814]: 
+  ↓Return [steps.ReturnStep-1727199611514]: 
+↓Error_structure [steps.XMLErrorStep-1727199611517]: 
   details: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -98,41 +120,31 @@
       - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
       - SmartType: 
         - ↑mode: PLAIN
-        - →→: Unable to test the connection
-↓Driver [variables.RequestableVariable-1727110592679]: 
-↓User [variables.RequestableVariable-1727110601632]: 
-↓Password [variables.RequestableVariable-1727110608843]: 
+        - →→: Unable to list the tables
+↓Driver [variables.RequestableVariable-1727199611520]: 
+↓User [variables.RequestableVariable-1727199611523]: 
+↓Password [variables.RequestableVariable-1727199611526]: 
   value: 
     - ↑ciphered: true
     - ↑traceable: false
     - →→: xd8e180806a1c1d83a6255212121ab827
   visibility: '-1'
-↓Server [variables.RequestableVariable-1727195933824]: 
-↓Port [variables.RequestableVariable-1727195942041]: 
-↓Database [variables.RequestableVariable-1727195950795]: 
-↓TestPostgreKO [core.TestCase]: 
-  ↓Driver [variables.TestCaseVariable-1727185057578]: 
-    value: org.postgresql.Driver
-  ↓User [variables.TestCaseVariable-1727185057581]: 
-    value: reader
-  ↓Password [variables.TestCaseVariable-1727185057584]: 
-    value: 
-      - ↑ciphered: true
-      - ↑traceable: false
-      - →→: xc699f309c6ceddc75fc7f04c717ef992
-    visibility: '-1'
-  ↓URL [variables.TestCaseVariable-1727185057587]: 
-    value: jdbc:postgresql://hh-pgsql-public.ebi.ac.uk/pfmegrnargs
+↓Server [variables.RequestableVariable-1727199611529]: 
+↓Port [variables.RequestableVariable-1727199611532]: 
+↓Database [variables.RequestableVariable-1727199611535]: 
 ↓TestPostgreOK [core.TestCase]: 
-  ↓Driver [variables.TestCaseVariable-1727110644557]: 
+  ↓Driver [variables.TestCaseVariable-1727199611552]: 
     value: org.postgresql.Driver
-  ↓User [variables.TestCaseVariable-1727110644559]: 
+  ↓User [variables.TestCaseVariable-1727199611555]: 
     value: reader
-  ↓Password [variables.TestCaseVariable-1727110644561]: 
+  ↓Password [variables.TestCaseVariable-1727199611558]: 
     value: 
       - ↑ciphered: true
       - ↑traceable: false
       - →→: xbf46b6478a21d2d3e941df0858dcafe4574c27d0df4b48f2650719a76124e30a
     visibility: '-1'
-  ↓URL [variables.TestCaseVariable-1727111362410]: 
-    value: jdbc:postgresql://hh-pgsql-public.ebi.ac.uk/pfmegrnargs
+  ↓Server [variables.TestCaseVariable-1727252105642]: 
+    value: hh-pgsql-public.ebi.ac.uk
+  ↓Port [variables.TestCaseVariable-1727252105644]: 
+  ↓Database [variables.TestCaseVariable-1727252105646]: 
+    value: pfmegrnargs

@@ -1,22 +1,20 @@
+connectionPool: false
 jdbcDriverClassName: org.postgresql.Driver
-jdbcURL: jdbc:postgresql://<server_name>:<port(optional)>/<database_name>
+jdbcURL: jdbc:postgresql://hh-pgsql-public.ebi.ac.uk/pfmegrnargs
+testOnBorrow: true
 ↓SQLTransaction [transactions.SqlTransaction]: 
   ↑default: true
+  sqlQuery: '{{Query}}'
   handlers: 
     →: |
       '
       // Handles the transaction start event.
       function onTransactionStarted() {
-          // TODO: add your code here
-      
-          // TODO: customize the returned value (if you omit returned value, the 
-          // algorithm will continue its process).
-          // Possible values are:
-          //    cancel - means the algorithm cancels the transaction core process.
-      
-          // return "cancel";
-          context.getConnector()
-          
+          context.getConnector().setJdbcDriverClassName(Driver)
       }
       '
   ↓Query [variables.RequestableVariable-1727111865555]: 
+  ↓URL [variables.RequestableVariable-1727167968651]: 
+  ↓Driver [variables.RequestableVariable-1727168232521]: 
+  ↓c8o_title [variables.RequestableVariable-1727184050878]: 
+    description: c8o_title

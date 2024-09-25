@@ -17,7 +17,7 @@
   ↓SQL_connector [connectors.SqlConnector-1727109379194]: 🗏 connectors/SQL_connector.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓DataBasesConnect [sequences.GenericSequence]: 🗏 sequences/DataBasesConnect.yaml
-  ↓DataBasesList [sequences.GenericSequence]: 🗏 sequences/DataBasesList.yaml
+  ↓DataBasesListTables [sequences.GenericSequence]: 🗏 sequences/DataBasesListTables.yaml
   ↓formssource_GetTableData [sequences.GenericSequence]: 🗏 sequences/formssource_GetTableData.yaml
   ↓lib_BaseRow_reference [references.ProjectSchemaReference]: 
     projectName: lib_BaseRow=https://github.com/convertigo/c8oprj-lib-baserow.git:branch=8.3.X
